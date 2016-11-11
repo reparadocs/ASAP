@@ -72,7 +72,9 @@ class ConnectUser(APIView):
     if not profile:
       return Response('Not Owner', status=status.HTTP_400_BAD_REQUEST)
     serializer = SocialSerializer(profile, data=request.data)
+    print request.data
     if serializer.is_valid():
+      print serializer.validated_data
       serializer.save()
       return Response(SocialSerializer(profile).data, status=status.HTTP_200_OK)
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
