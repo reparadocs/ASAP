@@ -1,0 +1,132 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="">
+<meta name="author" content="Rishab Hegde">
+
+<title>
+  
+   ASAP!
+  
+</title>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+<!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.js"></script>
+  <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+<!-- RSS Feed -->
+<link rel="alternate" type="application/rss+xml" title="RSS" href="/feed.xml">
+
+<!-- Favicons -->
+<link rel="icon" href="/favicon.ico">
+
+
+  </head>
+   <body>
+    <h1>Welcome to ASAP</h1>
+        {% if profile.name %}
+      <h3> {{profile.name}} has shared their ASAP profile with you! </h3>
+    {% endif %}   
+
+    {% if profile.bio %}
+      <h4> bio: {{profile.bio}} </h4>
+    {% endif %}
+  <div class="container">
+         {% if profile.email %}
+
+    <div class="row">
+        <h4>Email: <a href="mailto:{{profile.email}}"> {{profile.email}}</a></h4>
+      </div>
+            {% endif %}
+
+                    {% if profile.facebook %}
+
+
+      <div class="row">
+
+
+      <a href="{{profile.facebook}}"><img src="https://facebookbrand.com/wp-content/themes/fb-branding/prj-fb-branding/assets/images/fb-art.png" height=100 width=100 /></a>
+      </div>
+              {% endif %}
+
+      {% if profile.linkedin %}
+      <div class="row">
+
+      <a href="{{profile.linkedin}}"><img src="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png" height=100 width=100 /></a>
+      </div>
+      {% endif %}
+
+    {% if profile.phone %}
+        <div class="row">
+        <h4> Phone: {{profile.phone}} </h4>
+    </div>
+    {% endif %}
+
+    {% if profile.spotify %}
+    <div class="row">
+    <iframe src="https://embed.spotify.com/follow/1/?uri={{profile.spotify}}&size=detail&theme=light" width="300" height="56" scrolling="no" frameborder="0" allowtransparency="false"></iframe>
+    </div>
+    {% endif %}
+
+          {% if profile.soundcloud %}
+      <div class="row">
+
+      <a href="{{profile.soundcloud}}"><img src="http://www.freelogovectors.net/wp-content/uploads/2014/01/soundcloud_logo.jpg" height=100 width=100 /></a>
+      </div>
+      {% endif %}
+
+
+          {% if profile.snapchat %}
+      <div class="row">
+
+            <h4> snapchat: {{ profile.snapchat }}</h4>
+
+      </div>
+      {% endif %}
+
+
+
+          {% if profile.twitter %}
+      <div class="row">
+
+      <a class="twitter-follow-button"
+  href="{{profile.twitter}}">
+Follow @TwitterDev</a></a>
+      </div>
+      {% endif %}
+
+  </div>
+  <script>window.twttr = (function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0],
+    t = window.twttr || {};
+  if (d.getElementById(id)) return t;
+  js = d.createElement(s);
+  js.id = id;
+  js.src = "https://platform.twitter.com/widgets.js";
+  fjs.parentNode.insertBefore(js, fjs);
+
+  t._e = [];
+  t.ready = function(f) {
+    t._e.push(f);
+  };
+
+  return t;
+}(document, "script", "twitter-wjs"));</script>
+  </body>
+</html>

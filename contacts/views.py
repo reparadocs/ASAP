@@ -10,6 +10,7 @@ from django.contrib.auth.models import User
 from django.core.exceptions import ObjectDoesNotExist
 from django.http import Http404
 from models import Profile
+from django.shortcuts import render
 from rest_framework.authentication import SessionAuthentication, BasicAuthentication
 
 # Create your views here.
@@ -53,6 +54,19 @@ class UserInfo(APIView):
     if not profile:
       return Response('Weird Error', status=status.HTTP_400_BAD_REQUEST)
     return Response(SocialSerializer(profile).data, status=status.HTTP_200_OK)
+
+class WebUserInfo(APIView):
+  def get_object(self, request, pk):
+    try:
+      user = User.objects.get(pk=pk)
+      return user.profile
+    except User.DoesNotExist:
+      raise Http404
+
+  def get(self, request, pk):
+    profile = self.get_object(request, pk)
+    context = {'profile': profile}
+    return render(request, 'contacts/index.html', context)
 
 class ConnectUser(APIView):
   authentication_classes = (SessionAuthentication, BasicAuthentication)
