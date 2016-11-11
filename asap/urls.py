@@ -15,6 +15,8 @@ Including another URLconf
 """
 from django.conf.urls import include, url
 from django.contrib import admin
+from django.conf.urls.static import static
+
 import settings
 
 urlpatterns = [
@@ -22,9 +24,5 @@ urlpatterns = [
     url(r'^api/', include('contacts.urls')),
     url(r'^api-auth/', include('rest_framework.urls',
                                namespace='rest_framework')),
-
-]
-
-urlpatterns += patterns('',
-        (r'^static/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.STATIC_ROOT}),
-    )
+    
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
