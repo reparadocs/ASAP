@@ -26,7 +26,7 @@ class CreateUser(APIView):
         profile = Profile(user=user)
         profile.save()
         token = Token.objects.create(user=user)
-        return Response({'token': token.key}, status=status.HTTP_201_CREATED)
+        return Response({'token': token.key, 'id': user.id}, status=status.HTTP_201_CREATED)
       return Response({'errors': 'Username already exists'}, status=status.HTTP_400_BAD_REQUEST)
     return Response({'errors': 'Fields may not be blank'}, status=status.HTTP_400_BAD_REQUEST)
 
