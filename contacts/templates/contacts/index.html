@@ -1,132 +1,61 @@
-
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="">
-<meta name="author" content="Rishab Hegde">
-
-<title>
+<head>  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   
-   ASAP!
+  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+  <link rel="stylesheet" href="{%static 'normalize.css'%}">
+  <link rel="stylesheet" href="{%static 'skeleton.css'%}">
+
+  <style>
+  a img
+  {
+    border: 0 none;
+  }
+  .image-link
+  {
+    text-decoration: none;
+  }
+  </style>
+
+  <title>ASAP</title>
   
-</title>
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
-<!-- Optional theme -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-
-<!-- Latest compiled and minified JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-
-<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-<!--[if lt IE 9]>
-  <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.js"></script>
-  <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-<![endif]-->
-
-<!-- RSS Feed -->
-<link rel="alternate" type="application/rss+xml" title="RSS" href="/feed.xml">
-
-<!-- Favicons -->
-<link rel="icon" href="/favicon.ico">
-
-
-  </head>
-   <body>
-    <h1>Welcome to ASAP</h1>
-        {% if profile.name %}
-      <h3> {{profile.name}} has shared their ASAP profile with you! </h3>
-    {% endif %}   
-
-    {% if profile.bio %}
-      <h4> bio: {{profile.bio}} </h4>
-    {% endif %}
+</head>
+<body style="background:#f3f3f3; font-family: 'Lato', sans-serif;">
+    
   <div class="container">
-         {% if profile.email %}
-
+    
     <div class="row">
-        <h4>Email: <a href="mailto:{{profile.email}}"> {{profile.email}}</a></h4>
+      <div class="twelve columns" style="margin-top: 2%;">
+        <h4 style="text-align: center; letter-spacing: 1.5px">Welcome To</h4>
+        <center><img src="{%static 'logo.png'%}" height=62.5px width=162.5px></center>
+
+        <!-- <h4 style="text-align: center">Connect with Our Founder <br><span style="font-size: 36px; letter-spacing: 1.5px"> Brett Tyler </span> </h4> -->
+        <h4 style="text-align: center; font-size: 32px; letter-spacing: 1.5px">{{profile.name}}</h4>
+        <center><img src="{%static 'profile.png'%}" height=115 width=115></center>
+        <center><img src="{%static 'phone.png'%}" height=19 width=19> <span style="font-family: 'Open Sans', sans-serif; font-size: 20px">&nbsp;{{profile.phone}}</span></center>
+        <center><img src="{%static 'mail.png'%}" height=17 width=25> <span style="font-family: 'Open Sans', sans-serif; font-size: 20px">&nbsp;<a href="mailto:{{profile.email}}">{{profile.email}}</a></span></center>
+        <br>
+        <center>
+        <a href="{{profile.facebook}}" class="image-link"><img src="{%static 'facebook.png'%}" height=60 width=60> </a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <a href="https://twitter.com/{{profile.twitter}}"><img src="{%static 'twitter.png'%}" height=60 width=60></a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <a href="{{profile.linkedin}}" class="image-link"><img src="{%static 'linkedin.png'%}" height=60 width=60> </a>
+        <p><br>
+        <a href="https://www.instagram.com/{{profile.instagram}}"><img src="{%static 'instagram.png'%}" height=60 width=60> </a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <a href="https://www.snapchat.com/add/{{ profile.snapchat }}" class="image-link"><img src="{%static 'snapchat.png'%}" height=60 width=60> </a>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <a href="https://www.youtube.com/channel/UChegNfGBoZa9uH2sO28Q49A" class="image-link"><img src="{%static 'youtube.png'%}" height=60 width=60> </a> 
+        <p>
+        <img src="{%static 'download-on-appstore.png'%}" height=35% width=35%>
+        </center>
+        
+        
       </div>
-            {% endif %}
-
-                    {% if profile.facebook %}
-
-
-      <div class="row">
-
-
-      <a href="{{profile.facebook}}"><img src="https://facebookbrand.com/wp-content/themes/fb-branding/prj-fb-branding/assets/images/fb-art.png" height=100 width=100 /></a>
-      </div>
-              {% endif %}
-
-      {% if profile.linkedin %}
-      <div class="row">
-
-      <a href="{{profile.linkedin}}"><img src="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png" height=100 width=100 /></a>
-      </div>
-      {% endif %}
-
-    {% if profile.phone %}
-        <div class="row">
-        <h4> Phone: {{profile.phone}} </h4>
-    </div>
-    {% endif %}
-
-    {% if profile.spotify %}
-    <div class="row">
-    <iframe src="https://embed.spotify.com/follow/1/?uri={{profile.spotify}}&size=detail&theme=light" width="300" height="56" scrolling="no" frameborder="0" allowtransparency="false"></iframe>
-    </div>
-    {% endif %}
-
-          {% if profile.soundcloud %}
-      <div class="row">
-
-      <a href="{{profile.soundcloud}}"><img src="http://www.freelogovectors.net/wp-content/uploads/2014/01/soundcloud_logo.jpg" height=100 width=100 /></a>
-      </div>
-      {% endif %}
-
-
-          {% if profile.snapchat %}
-      <div class="row">
-
-            <h4> <a href="https://www.snapchat.com/add/{{ profile.snapchat }}">Snapchat</a></h4>
-
-      </div>
-      {% endif %}
-
-
-
-          {% if profile.twitter %}
-      <div class="row">
-
-      <a class="twitter-follow-button"
-  href="{{profile.twitter}}">
-Follow @TwitterDev</a></a>
-      </div>
-      {% endif %}
-
+    </div>    
+    
   </div>
-  <script>window.twttr = (function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0],
-    t = window.twttr || {};
-  if (d.getElementById(id)) return t;
-  js = d.createElement(s);
-  js.id = id;
-  js.src = "https://platform.twitter.com/widgets.js";
-  fjs.parentNode.insertBefore(js, fjs);
 
-  t._e = [];
-  t.ready = function(f) {
-    t._e.push(f);
-  };
-
-  return t;
-}(document, "script", "twitter-wjs"));</script>
-  </body>
+</body>
 </html>
