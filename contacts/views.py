@@ -17,6 +17,7 @@ from rest_framework.authentication import SessionAuthentication, BasicAuthentica
 
 class CreateUser(APIView):
   def post(self, request, format=None):
+    print "here"
     serializer = UserSerializer(data=request.data)
     if serializer.is_valid():
       try:
@@ -38,7 +39,7 @@ class LoginUser(APIView):
       user = authenticate(username=serializer.data['username'], password=serializer.data['password'])
       if user:
         token = Token.objects.get_or_create(user=user)
-        return Response({'token': token[0].key})
+        return Response({'token': token[0].key, 'id': user.id})
     return Response({'errors': 'Username/Password is not correct'}, status=status.HTTP_400_BAD_REQUEST)
 
 class UserInfo(APIView):
@@ -86,9 +87,7 @@ class ConnectUser(APIView):
     if not profile:
       return Response('Not Owner', status=status.HTTP_400_BAD_REQUEST)
     serializer = SocialSerializer(profile, data=request.data)
-    print request.data
     if serializer.is_valid():
-      print serializer.validated_data
       serializer.save()
       return Response(SocialSerializer(profile).data, status=status.HTTP_200_OK)
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

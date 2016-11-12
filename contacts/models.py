@@ -19,3 +19,4 @@ class Profile(models.Model):
   snapchat = models.CharField(max_length=200, blank=True, null=True)
   snapcode = models.ImageField(null=True)
   twitter = models.CharField(max_length=200, blank=True, null=True)
+  instagram = models.CharField(max_length=200, blank=True, null=True)
